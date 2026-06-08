@@ -3,6 +3,7 @@ import { useState } from "react";
 import { RiArtboardLine, RiInstagramLine, RiPinterestLine, RiLinkedinBoxLine } from "react-icons/ri";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { HiOutlineMail } from "react-icons/hi";
 
 // Using relative path tracking to eliminate path alias resolution failures
 import { initializeApp, getApps, getApp } from "firebase/app";
@@ -65,13 +66,10 @@ export default function GalleryFooter() {
                         
                         {/* Social Interaction Handles Node */}
                         <div className="flex items-center gap-4">
-                            <a href="#" className="p-2 bg-slate-900 border border-slate-800/80 rounded-md hover:text-amber-400 hover:border-amber-500/20 transition-all duration-300" title="Instagram Creative Profile">
-                                <RiInstagramLine size={18} />
+                            <a href="https:mail.google.com" className="p-2 bg-slate-900 border border-slate-800/80 rounded-md hover:text-amber-400 hover:border-amber-500/20 transition-all duration-300" title="Pinterest Spatial Concept Inspo Boards">
+                               <HiOutlineMail size={18} />
                             </a>
-                            <a href="#" className="p-2 bg-slate-900 border border-slate-800/80 rounded-md hover:text-amber-400 hover:border-amber-500/20 transition-all duration-300" title="Pinterest Spatial Concept Inspo Boards">
-                                <RiPinterestLine size={18} />
-                            </a>
-                            <a href="#" className="p-2 bg-slate-900 border border-slate-800/80 rounded-md hover:text-amber-400 hover:border-amber-500/20 transition-all duration-300" title="LinkedIn Professional Collective Channel">
+                            <a href="https://www.linkedin.com/in/destiny-njoagwuali-a2247b216?utm_source=share_via&utm_content=profile&utm_medium=member_android" className="p-2 bg-slate-900 border border-slate-800/80 rounded-md hover:text-amber-400 hover:border-amber-500/20 transition-all duration-300" title="LinkedIn Professional Collective Channel">
                                 <RiLinkedinBoxLine size={18} />
                             </a>
                         </div>
@@ -164,8 +162,9 @@ export default function GalleryFooter() {
                     </div>
                     
                     <div className="flex gap-6 text-slate-400 text-sm font-mono">
-                        <a href="/privacy" className="hover:text-slate-400 transition-colors">/privacy-policy</a>
-                        <a href="/archive" className="hover:text-slate-400 transition-colors">/terms-of-archive</a>
+                        <a href="/privacy" className="hover:text-slate-400 transition-colors">privacy-policy</a>
+                        <span>|</span>
+                        <a href="/archive" className="hover:text-slate-400 transition-colors">terms-of-archive</a>
                         <span className="text-slate-600 select-none">v1.4.2_release</span>
                     </div>
                 </div>

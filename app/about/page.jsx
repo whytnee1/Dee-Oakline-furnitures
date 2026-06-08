@@ -137,14 +137,15 @@ export default function AboutPage() {
                 {/* Right Side: High Artistic Concept Showcase Image */}
                 <div className="lg:col-span-5 relative aspect-[4/5] rounded-xl overflow-hidden group border border-slate-800 bg-slate-950 shadow-2xl">
                     <img 
-                        src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1000&q=80" 
+                        src="/CEO.jpg" 
                         alt="Dee Oak-line studio architecture workshop"
                         className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 group-hover:brightness-90"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80"></div>
                     <div className="absolute bottom-6 left-6 right-6">
                         <span className="text-xs font-mono text-amber-400 tracking-widest block mb-1">DESIGN LAB MANIFESTO</span>
-                        <p className="text-sm font-light text-slate-300 italic">"Material integrity isn’t a style specification—it is an absolute architectural obligation."</p>
+                        <p className="text-sm font-light text-slate-300 italic">"Quality materials are not optional; they are essential for building furniture that lasts."</p>
+                        <p className="text-lg font-mono text-amber-400 uppercase tracking-widest mt-0.5">~MAZI~</p>
                     </div>
                 </div>
             </section>

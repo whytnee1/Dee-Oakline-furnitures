@@ -71,6 +71,12 @@ export default function ManifestoLanding() {
     return (
         <div className="min-h-screen bg-slate-900 text-slate-100 font-sans selection:bg-amber-500 selection:text-slate-900 flex flex-col justify-between relative overflow-hidden">
             
+            {/* Safe Client/Server Background Asset Node - Avoids using pseudo properties to prevent Turbopack bugs and Hydration errors */}
+            <div 
+                className="absolute inset-0 bg-cover bg-center opacity-[0.25] pointer-events-none z-0" 
+                style={{ backgroundImage: "url('/Femalestaffs.jpg')" }}
+            />
+            
             {/* Background Aesthetic Line Elements */}
             <div className="absolute top-20 left-1/2 -translate-x-1/2 pointer-events-none opacity-5 z-0">
                 <ArtboardIcon />
@@ -109,7 +115,7 @@ export default function ManifestoLanding() {
                     {pillars.map((pillar, idx) => (
                         <div 
                             key={idx} 
-                            className="bg-slate-800/30 border border-slate-800 p-6 rounded-xl hover:border-slate-700/80 transition-all duration-300 shadow-xl flex flex-col gap-4"
+                            className="bg-slate-800/30 border border-slate-800 p-6 rounded-xl hover:border-slate-700/80 transition-all duration-300 shadow-xl flex flex-col gap-4 backdrop-blur-sm"
                         >
                             <div className="w-10 h-10 rounded-lg bg-slate-900/80 flex items-center justify-center border border-slate-700/50">
                                 {pillar.icon}
@@ -117,7 +123,7 @@ export default function ManifestoLanding() {
                             <h2 className="text-lg font-bold tracking-tight text-slate-100">
                                 {pillar.title}
                             </h2>
-                            <p className="text-sm text-slate-400 font-light leading-relaxed">
+                            <p className="text-sm text-slate-200 font-light leading-relaxed">
                                 {pillar.text}
                             </p>
                         </div>
@@ -125,13 +131,11 @@ export default function ManifestoLanding() {
                 </div>
 
                 {/* High Fidelity Statement Blockquote Overlay */}
-                <section className="border-l-2 border-amber-500 bg-slate-800/20 p-6 md:p-8 rounded-r-xl max-w-4xl border border-y-slate-800 border-r-slate-800">
+                <section className="border-l-2 border-amber-500 bg-slate-800/20 p-6 md:p-8 rounded-r-xl max-w-4xl border border-y-slate-800 border-r-slate-800 backdrop-blur-sm">
                     <p className="text-sm md:text-base text-slate-300 font-light leading-relaxed italic">
-                        &ldquo;True luxury is hidden in plain sight. It is found in the weight of a door, the grain match across a seamless credenza, and the absolute illusion of weightlessness in a floating platform. We do not manufacture furniture. We archive permanent spatial art.&rdquo;
+                        &ldquo;Real luxury is found in the small details. It can be seen in the solid feel of a door, the smooth flow of wood grain across a cabinet, and the clean look of a floating design. We don't just make furniture—we create timeless pieces that enhance and define a space.&rdquo;
                     </p>
-                    <span className="block mt-4 text-[10px] uppercase font-mono tracking-widest text-amber-500 font-bold">
-                        — Section IV. The Curated Archive Registry
-                    </span>
+                    <p className="text-lg font-mono text-amber-400 uppercase tracking-widest mt-0.5">~MAZI~</p>
                 </section>
 
             </main>

@@ -26,37 +26,164 @@ export default function GalleryLanding() {
             id: 1,
             title: "The Minimalist Oak Credenza",
             category: "Living Room",
-            description: "Handcrafted from solid northern white oak. Features seamless grain transitions, push-to-open magnetic latches, and custom matte brass dowel legs.",
             image: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=1000&q=80"
         },
         {
             id: 2,
             title: "Scandinavian Arc Lounge Chair",
             category: "Living Room",
-            description: "Ergonomically steamed ash wood frame paired with organic, unbleached bouclé upholstery. Designed for reflective living spaces.",
             image: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=1000&q=80"
         },
         {
             id: 3,
-            title: "Monolithic Walnut Kitchen Island",
+            title: "Glossy Kitchen",
             category: "Kitchen",
-            description: "A functional architectural centerpiece. Striking charcoal-stained walnut body integrated with a waterfall edge premium quartzite surface.",
-            image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1000&q=80"
+            image: "/Glossy-kitchen.jpg"
         },
         {
             id: 4,
             title: "Floating Floating Platform Bed",
             category: "Bed Room",
-            description: "An illusion of weightlessness crafted from dark premium timber. Built-in ambient warm LED paths along the inner frame casing.",
             image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=80"
         },
         {
             id: 5,
             title: "Asymmetric Floating Work Desk",
             category: "WorkSpace",
-            description: "Sleek matte midnight laminate overlaid on premium birch ply layers. Engineered with hidden wire bays for seamless cable layouts.",
             image: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1000&q=80"
-        }
+        },
+         {
+            id: 6,
+            title: "Elegant Living Room",
+            category: "Living Room",
+            image: "/ElegantLIvingRoom.jpg"
+        },
+        {
+            id: 7,
+            title: "Dining set",
+            category: "Living Room",
+            image: "/dinning.jpg"
+        },
+        {
+            id: 8,
+            title: "Sized Bed",
+            category: "Bed Room",
+            image: "/Bedroom (1).jpg"
+        },
+        {
+            id: 9,
+            title: "Luxury Kitchen",
+            category: "Kitchen",
+            image: "/Kitchen1.jpg"
+        },
+        {
+            id: 10,
+            title: "Contemporary Kitchen",
+            category: "Kitchen",
+            image: "/kitchen2.jpg"
+        },
+        {
+            id: 11,
+            title: "Custom Kitchen Design",
+            category: "Kitchen",
+            image: "/kitchen3.jpg"
+        },
+        {
+            id: 12,
+            title: "The Heart of the Home",
+            category: "Kitchen",
+            image: "/kitchen4.jpg"
+        },
+        {
+            id: 13,
+            title: "Timeless Kitchen Design",
+            category: "Kitchen",
+            image: "/kitchen5.jpg"
+        },
+        {
+            id: 14,
+            title: "Modern Living Room",
+            category: "Living Room",
+            image: "/Livingroom2.jpg"
+        },
+        {
+            id: 15,
+            title: "Comfort Meets Style",
+            category: "Living Room",
+            image: "/Livingroom3.jpg"
+        },
+        {
+            id: 16,
+            title: "The Art of Living",
+            category: "Living Room",
+            image: "/Livingroom4.jpg"
+        },
+        {
+            id: 17,
+            title: "Modern Comfort",
+            category: "Living Room",
+            image: "/Livingroom5.jpg"
+        },
+        {
+            id: 18,
+            title: "Curated Living Spaces",
+            category: "Living Room",
+            image: "/Hdconsole.jpg"
+        },
+        {
+            id: 19,
+            title: "Inspired Living",
+            category: "Living Room",
+            image: "/LightUpconsole.jpg"
+        },
+        {
+            id: 20,
+            title: "The Perfect Retreat",
+            category: "Bed Room",
+            image: "/Bedroom3.jpg"
+        },
+        {
+            id: 21,
+            title: "Rest & Relaxation",
+            category: "Bed Room",
+            image: "/Bedroom4.jpg"
+        },
+        {
+            id: 22,
+            title: "Comfort Redefined",
+            category: "Bed Room",
+            image: "/Bedroom5.jpg"
+        },
+        {
+            id: 23,
+            title: "Sophisticated Bedrooms",
+            category: "Bed Room",
+            image: "/Bedroom6.jpg"
+        },
+         {
+            id: 24,
+            title: "Crafted for Comfort",
+            category: "Bed Room",
+            image: "/Bedroom7.jpg"
+        },
+        {
+            id: 25,
+            title: "Personal Sanctuary",
+            category: "Bed Room",
+            image: "/Bedroom8.jpg"
+        },
+        {
+            id: 26,
+            title: "Perfect BrainSpace",
+            category: "WorkSpace",
+            image: "workspace2.jpg"
+        },
+        {
+            id: 27,
+            title: "Designed for Productivity",
+            category: "WorkSpace",
+            image: "workspace1.jpg"
+        },
     ]);
 
     // Active Category Filter Setup
@@ -75,6 +202,7 @@ export default function GalleryLanding() {
 
     // Handle Local Dynamic File Upload Previews
     const handleImageChange = (e) => {
+        if (!isDevMode) return;
         const file = e.target.files[0];
         if (file) {
             const imageUrl = URL.createObjectURL(file);
@@ -86,13 +214,20 @@ export default function GalleryLanding() {
     // Form Submission Handling logic
     const handleUploadSubmit = (e) => {
         e.preventDefault();
+        
+        if (!isDevMode) {
+            alert("Action unauthorized. Visiting accounts do not possess catalog generation rights.");
+            setIsUploadOpen(false);
+            return;
+        }
+
         if (!formData.title || !formData.image || !formData.description) {
             alert("Please complete all fields and attach an image.");
             return;
         }
 
         const newItem = {
-            id: Date.now(), // Use timestamp to avoid key collision issues on dynamic lists
+            id: Date.now(),
             title: formData.title,
             category: formData.category,
             description: formData.description,
@@ -128,7 +263,6 @@ export default function GalleryLanding() {
             document.body.removeChild(link);
             URL.revokeObjectURL(blobUrl);
         } catch (error) {
-            // Fallback for strict cross-origin restrictions
             window.open(imageUrl, "_blank");
         }
     };
@@ -173,13 +307,15 @@ export default function GalleryLanding() {
                         Explore our spatial installations, architectural elements, and bespoke premium concepts designed by Dee Oak-line. Contribute to the archive by uploading custom spatial renderings or new inventory items below.
                     </p>
                     
-                    <button 
-                        onClick={() => setIsUploadOpen(true)}
-                        className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 px-6 py-3.5 rounded-md font-semibold text-sm shadow-xl hover:from-amber-300 hover:to-amber-400 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0"
-                    >
-                        <RiMenuAddLine className="text-lg" />
-                        Upload New Showcase
-                    </button>
+                    {isDevMode && (
+                        <button 
+                            onClick={() => setIsUploadOpen(true)}
+                            className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 px-6 py-3.5 rounded-md font-semibold text-sm shadow-xl hover:from-amber-300 hover:to-amber-400 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 animate-in fade-in slide-in-from-bottom-2"
+                        >
+                            <RiMenuAddLine className="text-lg" />
+                            Upload New Showcase
+                        </button>
+                    )}
                 </div>
             </header>
 
@@ -260,7 +396,6 @@ export default function GalleryLanding() {
                                     {item.description}
                                 </p>
                                 <div className="mt-5 pt-4 border-t border-slate-800 flex items-center justify-between text-xs text-slate-500">
-                                    {/* Small hidden click node trigger for developer toggle fallback convenience alongside standard key bindings */}
                                     <span 
                                         className="cursor-default select-none hover:text-slate-400 transition-colors"
                                         onClick={() => setIsDevMode(!isDevMode)}
@@ -289,7 +424,7 @@ export default function GalleryLanding() {
             </main>
 
             {/* Premium Overlay Asset Management Backdrop (Upload Modal) */}
-            {isUploadOpen && (
+            {isUploadOpen && isDevMode && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md transition-opacity duration-300">
                     <div className="bg-slate-900 border border-slate-800 rounded-xl w-full max-w-xl shadow-2xl overflow-hidden relative transform transition-all animate-in fade-in zoom-in-95 duration-200">
                         

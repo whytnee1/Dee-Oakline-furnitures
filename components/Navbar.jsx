@@ -19,7 +19,6 @@ export default function Navbar() {
         { label: "Our Manifesto", url: "/manifesto" },
         { label: "Chat Us", url: "/chat" },
         { label: "Contact", url: "/contact" },
-       
     ];
 
     const [anchorEl, setAnchorEl] = useState(null);
@@ -38,7 +37,7 @@ export default function Navbar() {
             <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between relative">
                 
                 {/* Left Side: Logo & Subtitle aligned to the absolute left edge */}
-                <div className="flex items-center gap-3 z-50">
+                <div className="flex items-center gap-3 z-50 shrink-0">
                     <Link href="/" className="flex items-center gap-2 group">
                         <div className="relative overflow-hidden rounded-md p-1">
                             <Image
@@ -49,30 +48,30 @@ export default function Navbar() {
                                 className="w-40 h-20 object-contain rounded bg-white/20 shadow-lg border-b border-slate-700/50 transition-transform duration-300 group-hover:scale-105"
                             />
                         </div>
-                        <span className="tracking-widest text-lg font-sans font-bold text-slate-300 group-hover:text-amber-400 transition-colors duration-200">
+                        <span className="tracking-widest text-lg font-sans font-bold text-slate-300 group-hover:text-amber-400 transition-colors duration-200 hidden sm:inline-block">
                             FURNITURES
                         </span>
                     </Link>
                 </div>
 
-                {/* Center: Main Branding Title remains centered on desktop, but hidden on mobile (`hidden md:block`) */}
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 text-center pointer-events-auto hidden md:block">
+                {/* Center: Main Branding Title fixed precisely to container geometry */}
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-40 text-center pointer-events-auto hidden md:block">
                     <Link href="/" className="block">
-                        <h1 className="text-xl md:text-3xl font-sans font-black tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-500 to-amber-600 transition-all duration-300 hover:brightness-110">
+                        <h1 className="text-xl md:text-3xl font-sans font-black tracking-[0.2em] mr-15 text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-500 to-amber-600 transition-all duration-300 hover:brightness-110">
                             DEE OAK-LINE
                         </h1>
                     </Link>
                 </div>
 
-                {/* Right Side: Smaller Navigation Links & Profile */}
-                <div className="flex items-center gap-6 z-50 justify-end">
-                    {/* Links - Hidden on Mobile, set to text-base for a cleaner look */}
-                    <nav className="hidden lg:flex items-center gap-6">
+                {/* Right Side: Navigation & Actions completely packed to the absolute right edge */}
+                <div className="flex items-center gap-8 z-50 ml-auto justify-end">
+                    {/* Links - ml-auto completely isolates these items to the right side of the header timeline */}
+                    <nav className="hidden lg:flex items-center gap-6 ml-auto">
                         {navLinks.map((item, i) => (
                             <Link 
                                 key={i} 
                                 href={item.url}
-                                className="relative text-base font-medium tracking-wide text-slate-300 hover:text-amber-400 py-2 transition-colors duration-300 group"
+                                className="relative text-base font-medium tracking-wide text-slate-300 hover:text-amber-400 py-2 transition-colors duration-300 group whitespace-nowrap"
                             >
                                 {item.label}
                                 {/* Center-out expanding underline */}
@@ -81,16 +80,16 @@ export default function Navbar() {
                         ))}
                     </nav>
 
-                    {/* Desktop Auth Section - Active session only */}
+                    {/* Desktop Auth Section - Positioned next to rightmost links */}
                     {session && (
-                        <div className="hidden md:block">
+                        <div className="hidden md:block shrink-0">
                             <button
                                 id="basic-button"
                                 aria-controls={open ? 'basic-menu' : undefined}
                                 aria-haspopup="true"
                                 aria-expanded={open ? 'true' : undefined}
                                 onClick={handleClick}
-                                className="focus:outline-none focus:ring-2 focus:ring-amber-500 rounded-full"
+                                className="focus:outline-none focus:ring-2 focus:ring-amber-500 rounded-full block"
                             >
                                 <Avatar 
                                     alt={session?.user?.name} 
@@ -121,7 +120,7 @@ export default function Navbar() {
                     {/* Mobile Menu Toggle Hamburger Button */}
                     <button 
                         onClick={() => setNavOpen(!navOpen)}
-                        className="lg:hidden text-2xl text-slate-300 hover:text-amber-400 p-1 focus:outline-none z-50"
+                        className="lg:hidden text-2xl text-slate-300 hover:text-amber-400 p-1 focus:outline-none z-50 shrink-0"
                         aria-label="Toggle Navigation Menu"
                     >
                         {navOpen ? <IoMdClose /> : <RiMenu3Fill />}
@@ -132,7 +131,7 @@ export default function Navbar() {
             {/* Mobile Sidebar Overlay Panel */}
             <div className={`fixed inset-0 bg-slate-900/95 backdrop-blur-md transition-all duration-300 lg:hidden flex flex-col items-center justify-center gap-8 ${navOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}>
                 
-                {/* Mobile Navigation Links - Animated expanding center-out underline added on hover */}
+                {/* Mobile Navigation Links */}
                 <nav className="flex flex-col items-center gap-6">
                     {navLinks.map((item, i) => (
                         <Link 

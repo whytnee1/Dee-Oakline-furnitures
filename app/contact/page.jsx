@@ -93,17 +93,24 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans p-4 md:p-8 flex items-center justify-center relative overflow-hidden selection:bg-amber-500 selection:text-slate-900">
       
+      {/* Clean Client/Server Background Asset Node - Avoids inline pseudo compilation bugs */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center opacity-25 pointer-events-none z-0" 
+        style={{ backgroundImage: "url('/Oak-Logo.png')" }}
+      />
+
       {/* Decorative Blueprint Vector Graphics Sync Layout Background */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.02] flex justify-between max-w-7xl mx-auto px-4">
+      <div className="absolute inset-0 pointer-events-none opacity-[0.02] flex justify-between max-w-7xl mx-auto px-4 z-0">
         <div className="w-[1px] h-full bg-white"></div>
         <div className="w-[1px] h-full bg-white hidden md:block"></div>
         <div className="w-[1px] h-full bg-white"></div>
       </div>
 
-      <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-12 gap-8 bg-slate-900 border border-slate-800 rounded-2xl p-6 md:p-10 shadow-2xl relative z-10">
+      {/* Main Wrapper Grid: Balanced Smoke Glass Transparency */}
+      <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-12 gap-8 bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6 md:p-10 shadow-2xl relative z-10 backdrop-blur-md">
         
         {/* Left Segment: Spatial Context Studio Metadata Anchor details */}
-        <div className="lg:col-span-5 flex flex-col justify-between space-y-12">
+        <div className="lg:col-span-5 flex flex-col justify-between space-y-12 relative z-10">
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <RiArtboardLine size={22} className="text-amber-500" />
@@ -121,7 +128,7 @@ export default function ContactPage() {
 
           {/* Institutional Contact Methods Stream Stack */}
           <div className="space-y-4 font-mono text-xs text-slate-400">
-            <div className="flex items-center gap-3 bg-slate-950/40 border border-slate-800/60 p-3.5 rounded-xl">
+            <div className="flex items-center gap-3 bg-slate-950/40 border border-slate-800/50 p-3.5 rounded-xl backdrop-blur-sm">
               <IoMdCall size={18} className="text-amber-500 shrink-0" />
               <div>
                 <p className="text-sm text-slate-500 uppercase tracking-wider">Secure Studio Line</p>
@@ -129,7 +136,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="flex items-center gap-3 bg-slate-950/40 border border-slate-800/60 p-3.5 rounded-xl">
+            <div className="flex items-center gap-3 bg-slate-950/40 border border-slate-800/50 p-3.5 rounded-xl backdrop-blur-sm">
               <IoMdMail size={18} className="text-amber-500 shrink-0" />
               <div>
                 <p className="text-sm text-slate-500 uppercase tracking-wider">Direct Studio Email</p>
@@ -137,7 +144,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="flex items-center gap-3 bg-slate-950/40 border border-slate-800/60 p-3.5 rounded-xl">
+            <div className="flex items-center gap-3 bg-slate-950/40 border border-slate-800/50 p-3.5 rounded-xl backdrop-blur-sm">
               <IoMdTime size={18} className="text-amber-500 shrink-0" />
               <div>
                 <p className="text-sm text-slate-500 uppercase tracking-wider">Days Available</p>
@@ -152,8 +159,8 @@ export default function ContactPage() {
           </div>
         </div>
 
-        {/* Right Segment: High-Fidelity Custom Form Interaction Field Modules */}
-        <div className="lg:col-span-7 bg-slate-950/40 border border-slate-800/80 rounded-xl p-6 space-y-6">
+        {/* Right Segment: Translucent Form Input Field Module */}
+        <div className="lg:col-span-7 bg-slate-950/40 border border-slate-800/60 rounded-xl p-6 space-y-6 backdrop-blur-md relative z-10">
           <Formik
             initialValues={initialValues}
             validationSchema={contactSchema}
@@ -170,7 +177,7 @@ export default function ContactPage() {
                       name="name"
                       placeholder="e.g., John Doe"
                       disabled={isSubmitting}
-                      className={`w-full bg-slate-950 border rounded-xl px-4 py-2.5 text-xs text-slate-200 placeholder-slate-700 focus:outline-none focus:ring-1 transition-all disabled:opacity-50 ${
+                      className={`w-full bg-slate-950/80 border rounded-xl px-4 py-2.5 text-xs text-slate-200 placeholder-slate-700 focus:outline-none focus:ring-1 transition-all disabled:opacity-50 backdrop-blur-sm ${
                         touched.name && errors.name 
                           ? "border-rose-500 focus:border-rose-500 focus:ring-rose-500/30" 
                           : "border-slate-800 focus:border-amber-500/50 focus:ring-amber-500/30"
@@ -186,7 +193,7 @@ export default function ContactPage() {
                       name="email"
                       placeholder="name@email.com"
                       disabled={isSubmitting}
-                      className={`w-full bg-slate-950 border rounded-xl px-4 py-2.5 text-xs text-slate-200 placeholder-slate-700 focus:outline-none focus:ring-1 transition-all disabled:opacity-50 ${
+                      className={`w-full bg-slate-950/80 border rounded-xl px-4 py-2.5 text-xs text-slate-200 placeholder-slate-700 focus:outline-none focus:ring-1 transition-all disabled:opacity-50 backdrop-blur-sm ${
                         touched.email && errors.email 
                           ? "border-rose-500 focus:border-rose-500 focus:ring-rose-500/30" 
                           : "border-slate-800 focus:border-amber-500/50 focus:ring-amber-500/30"
@@ -203,7 +210,7 @@ export default function ContactPage() {
                       as="select"
                       name="subject"
                       disabled={isSubmitting}
-                      className={`w-full bg-slate-950 border rounded-xl px-4 py-2.5 text-xs text-slate-400 focus:outline-none focus:ring-1 transition-all disabled:opacity-50 appearance-none cursor-pointer ${
+                      className={`w-full bg-slate-950/80 border rounded-xl px-4 py-2.5 text-xs text-slate-400 focus:outline-none focus:ring-1 transition-all disabled:opacity-50 appearance-none cursor-pointer backdrop-blur-sm ${
                         touched.subject && errors.subject 
                           ? "border-rose-500 focus:border-rose-500 focus:ring-rose-500/30" 
                           : "border-slate-800 focus:border-amber-500/50 focus:ring-amber-500/30"
@@ -228,7 +235,7 @@ export default function ContactPage() {
                     rows={5}
                     placeholder="Enter your measurements, preferred wood type, and any project details..."
                     disabled={isSubmitting}
-                    className={`w-full bg-slate-950 border rounded-xl px-4 py-2.5 text-xs text-slate-200 placeholder-slate-700 focus:outline-none focus:ring-1 transition-all resize-none disabled:opacity-50 ${
+                    className={`w-full bg-slate-950/80 border rounded-xl px-4 py-2.5 text-xs text-slate-200 placeholder-slate-700 focus:outline-none focus:ring-1 transition-all resize-none disabled:opacity-50 backdrop-blur-sm ${
                       touched.message && errors.message 
                         ? "border-rose-500 focus:border-rose-500 focus:ring-rose-500/30" 
                         : "border-slate-800 focus:border-amber-500/50 focus:ring-amber-500/30"
