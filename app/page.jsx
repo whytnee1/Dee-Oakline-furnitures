@@ -56,7 +56,7 @@ export default function GalleryLanding() {
             id: 6,
             title: "Elegant Living Room",
             category: "Living Room",
-            image: "/ElegantLIvingRoom.jpg"
+            image: "/ElegantLivingRoom.jpg"
         },
         {
             id: 7,
